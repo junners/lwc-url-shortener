@@ -1,0 +1,9 @@
+<template>
+    <label for="alias">Alias</label><br />
+    <input type="text" value={alias} onblur={changeAlias} /><br />
+    <label for="url2">URL To Shorten</label><br />
+    <input type="url" value={url2} onblur={changeUrl} /><br /><br />
+    <input type="submit" onclick={formSubmit} />
+
+    {responses}
+</template>

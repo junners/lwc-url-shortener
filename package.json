@@ -1,0 +1,78 @@
+{
+    "name": "sample-app",
+    "description": "My amazing LWC app",
+    "version": "0.0.1",
+    "author": "junners",
+    "bugs": "https://github.com/junners/sample-app/issues",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "compression": "^1.7.4",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "helmet": "^4.1.1",
+        "nanoid": "^3.1.16",
+        "pg": "^8.4.2",
+        "pg-hstore": "^2.3.3",
+        "sequelize": "^6.3.5"
+    },
+    "devDependencies": {
+        "eslint": "^7.12.1",
+        "husky": "^4.3.0",
+        "lint-staged": "^10.5.1",
+        "lwc-services": "^2.2.3",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^2.1.2"
+    },
+    "engines": {
+        "node": ">=10.13.0",
+        "npm": ">=6.4.1",
+        "yarn": ">=1.9.4"
+    },
+    "homepage": "https://github.com/junners/sample-app",
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "keywords": [
+        "lwc"
+    ],
+    "license": "MIT",
+    "lint-staged": {
+        "**/*.{css,html,js,json,md,ts,yaml,yml}": [
+            "prettier --write"
+        ],
+        "./src/**/*.js": [
+            "eslint"
+        ]
+    },
+    "nodemonConfig": {
+        "watch": [
+            "src/server/**/*.js"
+        ],
+        "ext": "js",
+        "ignore": [
+            "src/**/*.spec.js",
+            "src/**/*.test.js"
+        ],
+        "exec": "node ./src/server/api.js"
+    },
+    "repository": "junners/sample-app",
+    "scripts": {
+        "build": "lwc-services build -m production -w scripts/webpack.config.js",
+        "build:development": "lwc-services build -w scripts/webpack.config.js",
+        "lint": "eslint ./src/**/*.js",
+        "prettier": "prettier --write \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+        "prettier:verify": "prettier --list-different \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+        "serve": "node src/server/api.js",
+        "serve:api": "node src/server/api.js",
+        "test:unit": "lwc-services test:unit",
+        "test:unit:coverage": "lwc-services test:unit --coverage",
+        "test:unit:debug": "lwc-services test:unit --debug",
+        "test:unit:watch": "lwc-services test:unit --watch",
+        "watch": "run-p watch:client watch:server",
+        "watch:client": "lwc-services watch",
+        "watch:server": "nodemon",
+        "setup": "node src/server/setup/envSetup.js"
+    }
+}
