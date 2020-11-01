@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const { Sequelize } = require('sequelize');
+const { applyExtraSetup } = require('./association');
 
 console.log(`database url ${process.env.DATABASE_URL}`);
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
@@ -8,7 +9,8 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 });
 
 const modelDefinitions = [
-	require('./models/slug')
+	require('./models/slug'),
+	require('./models/slugAccess')
 	// add here for new models
 ];
 
@@ -16,6 +18,6 @@ for (const model of modelDefinitions) {
 	model(sequelize);
 }
 
-// TODO: Add entity relationship
+applyExtraSetup(sequelize);
 
 module.exports = sequelize;

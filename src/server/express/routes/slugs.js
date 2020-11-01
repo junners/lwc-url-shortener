@@ -5,6 +5,9 @@ const validUrl = require('valid-url');
 async function getById(req, res) {
 	const id = req.params.slug;
 	const slugRecord = await models.slug.findByPk(id);
+
+	slugRecord.createSlugAccess({ who: req.ip });
+
 	if (slugRecord) {
 		res.status(200).redirect(slugRecord.longUrl);
 		return;
