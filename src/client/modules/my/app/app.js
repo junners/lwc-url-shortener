@@ -16,7 +16,7 @@ export default class App extends LightningElement {
 
     formSubmit(event) {
         event.preventDefault();
-        this.responses = this.postRequest({
+        this.postRequest({
             slug: this.alias,
             url: this.url2
         });
@@ -33,11 +33,15 @@ export default class App extends LightningElement {
                 body: JSON.stringify(params)
             });
             resolve(rawResponse);
-        }).then((data) => {
-            return new Promise((resolve) => {
-                const content = data.text();
-                resolve(content);
+        })
+            .then((data) => {
+                return new Promise((resolve) => {
+                    const content = data.text();
+                    resolve(content);
+                });
+            })
+            .then((data) => {
+                this.responses = data;
             });
-        });
     }
 }
