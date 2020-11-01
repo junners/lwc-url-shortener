@@ -1,14 +1,45 @@
 <template>
-	<label for="alias">Alias</label><br />
-	<input type="text" value={alias} onblur={changeAlias} /><br />
-	<label for="url2">URL To Shorten</label><br />
-	<input
-		type="url"
-		value={url2}
-		onblur={changeUrl}
-		pattern="^(http|https)://.*"
-		required
-	/><br /><br />
-	<input type="submit" onclick={formSubmit} /> <br /><br />
-	{responses}
+	<div class="fullscreenDiv">
+		<div class="center">
+			<div class="single-line"><span>How to use?</span> <br /></div>
+			<div class="single-line">
+				<span>Enter a url to shorten and submit</span> <br />
+			</div>
+			<div class="single-line">
+				<span>append the short url on your browser to redirect</span>
+				<br />
+			</div>
+			<br />
+			<br />
+			<br />
+			<div class="single-line">
+				<span for="alias">Alias: </span>
+				<span>
+					<input
+						id="alias"
+						type="text"
+						value={alias}
+						onblur={changeAlias}
+					/>
+				</span>
+				<br /><br />
+			</div>
+			<div class="single-line">
+				<label for="url2">URL To Shorten: </label
+				><input
+					type="url"
+					id="url2"
+					value={url2}
+					onblur={changeUrl}
+					pattern="^(http|https)://.*"
+					required
+				/><br />
+				<br /><br />
+			</div>
+			<input type="submit" onclick={formSubmit} /> <br /><br />
+			<div class="single-line">
+				<span>{responses}</span>
+			</div>
+		</div>
+	</div>
 </template>

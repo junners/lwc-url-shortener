@@ -29,7 +29,7 @@ async function create(req, res) {
 
 	// default a value if not specified;
 	if (!slug) {
-		slug = nanoid();
+		slug = nanoid(6);
 	}
 
 	slug = slug.toLowerCase();

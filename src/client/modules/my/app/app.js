@@ -42,25 +42,4 @@ export default class App extends LightningElement {
 				this.responses = data;
 			});
 	}
-	//     return new Promise((resolve) => {
-	//         const rawResponse = fetch('/slugs', {
-	//             method: 'POST',
-	//             headers: {
-	//                 Accept: 'application/json',
-	//                 'Content-Type': 'application/json'
-	//             },
-	//             body: JSON.stringify(params)
-	//         });
-	//         resolve(rawResponse);
-	//     })
-	//         .then((data) => {
-	//             return new Promise((resolve) => {
-	//                 const content = data.text();
-	//                 resolve(content);
-	//             });
-	//         })
-	//         .then((data) => {
-	//             this.responses = data;
-	//         });
-	// }
 }
